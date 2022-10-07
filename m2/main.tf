@@ -1,20 +1,19 @@
 resource "google_compute_instance" "this" {
   provider     = google
-  name         = "carved-rock-instance"
+  name         = "instance"
   machine_type = "e2-medium"
   zone         = "southamerica-east1-a"
 
   boot_disk {
     initialize_params {
-      image = "debian-cloud/debian-9"
+      image = "debian-10-buster-v20220920"
     }
   }
 
   network_interface {
-    network = "default"
-    access_config {
-      // Left blank to assign public IP
-    }
+    network = "projects/dc-interconnect/global/networks/vpc-interconnect-overflow"
+    subnetwork = "overflow-qas-br-01"
+    subnetwork_project = "dc-interconnect"
   }
 
   metadata = {
@@ -26,21 +25,20 @@ resource "google_compute_instance" "this" {
 
 resource "google_compute_instance" "beta_this" {
   provider     = google-beta
-  name         = "carved-rock-beta-instance"
+  name         = "instance-beta"
   machine_type = "e2-medium"
   zone         = "southamerica-east1-a"
 
   boot_disk {
     initialize_params {
-      image = "debian-cloud/debian-9"
+      image = "debian-10-buster-v20220920"
     }
   }
 
   network_interface {
-    network = "default"
-    access_config {
-      // Left blank to assign public IP
-    }
+    network = "projects/dc-interconnect/global/networks/vpc-interconnect-overflow"
+    subnetwork = "overflow-qas-br-01"
+    subnetwork_project = "dc-interconnect"
   }
 
   metadata = {

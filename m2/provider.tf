@@ -10,14 +10,13 @@ terraform {
 }
 
 provider "google" {
-  credentials = file("/home/renato/test-svc-creds.json")
-  project     = "terragrunt-infrastructure"
+  project     = "overflow-api-qas"
   region      = "southamerica-east1"
-  zone        = "southamerica-east1-a"
+  zone        = "southamerica-east1-c"
 }
 
 provider "google-beta" {
-  project = "terragrunt-infrastructure"
+  project = "overflow-api-qas"
   region  = "southamerica-east1"
-  zone    = "southamerica-east1-a"
+  zone    = "southamerica-east1-c"
 }
